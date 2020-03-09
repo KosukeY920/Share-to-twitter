@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "name": "share to twitter",
+    "version": "0.2",
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "contextMenus"
+    ],
+    "browser_action":
+    {
+        "default_title": "share to twitter"
+    },
+    "background":
+    {
+        "scripts": [ "script.js" ],
+        "persistent": true
+    },
+    "content_scripts": [{
+        "matches": ["https://twitter.com/intent/tweet/complete/*"],
+        "js": ["content.js"]
+    }]
+}
