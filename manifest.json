@@ -1,10 +1,10 @@
 {
     "manifest_version": 2,
     "name": "share to twitter",
-    "version": "0.2",
+    "version": "0.3",
+    "description": "今見ているページを簡単にTwitterへ共有",
     "permissions": [
         "activeTab",
-        "tabs",
         "contextMenus"
     ],
     "browser_action":
