@@ -14,7 +14,11 @@ GoogleChromeにおいて、簡単にTwitterへリンクを共有できる拡張�
     > 共有URL生成
 - content.js
     > タブを閉じる
+<<<<<<< HEAD
 ## インストール方法
+=======
+## How to install
+>>>>>>> 8cfae00516f875e7c287b1f674f99010fd68991b
 1. [こちら](https://github.com/KosukeY920/Share-to-twitter/releases)のリリースページから`Share-to-twitter_v0.x.zip
 `をダウンロード
 2. 任意の位置に解凍
@@ -27,5 +31,9 @@ GoogleChromeにおいて、簡単にTwitterへリンクを共有できる拡張�
 - [x] 拡張機能のアイコン
 - [ ] 文字列を選択して拡張機能を起動すると、選択した文字列を引用する機能
 
+<<<<<<< HEAD
 ## アイコン出典
+=======
+## icon Source
+>>>>>>> 8cfae00516f875e7c287b1f674f99010fd68991b
 アイコンに使用した画像は[ICOON MONO](https://icooon-mono.com/ "ICOON MONO")様よりお借りしました。
