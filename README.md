@@ -19,7 +19,7 @@ GoogleChromeにおいて、簡単にTwitterへリンクを共有できる拡張�
 
 
 ## インストール方法
-1. [こちら](https://github.com/KosukeY920/Share-to-twitter/releases)のリリースページから`Share-to-twitter_v0.x.zip
+1. [こちらのリリースページ](https://github.com/KosukeY920/Share-to-twitter/releases)から`Share-to-twitter_v0.x.zip
 `をダウンロード
 2. 任意の位置に解凍
 3. <chrome://extensions/>へアクセスし、「パッケージ化されていない拡張機能を読み込む」からフォルダごと選択
