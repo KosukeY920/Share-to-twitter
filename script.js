@@ -14,33 +14,68 @@ chrome.contextMenus.create({
 })
 
 //Twitter共有ページURLを生成
-//文字数がオーバーしそうなときは末尾を切り捨てて"..."を追加する
-//日本語と半角英数字が混ざるタイトルで文字数がオーバーするとバグる、改善が必要
+//文字数がオーバーしそうなときは末尾を切り捨てる
 function genURL(tab){
-  var template = 'https://twitter.com/intent/tweet?';
+  let template = 'https://twitter.com/intent/tweet?';
   
-  if(getLen(tab.title) >= 257){
-    var title = 'text=' + tab.title.substring(0, 126) + '...';
+  let strtmp = getLen(tab.title);
+  let strLength = strtmp.length;
+  let strArray = strtmp.strArray;
+  if(strLength >= 257){
+    var title = 'text=' + cutStr(tab.title, strArray, strLength);
   }else{
-    var title = 'text=' + tab.title
+    var title = 'text=' + tab.title;
   }
   title = encodeURI(title);
-  var url = '&url=' + tab.url;
+  let url = '&url=' + tab.url;
   window.open(template + title + url , 'newtab');
 }
 
 //半角英数字を1文字
 //それ以外の文字（全角英数字、日本語（半角カナを含む））を2文字
 //とした時の文字列の長さを取得
+//argument
+//  str: Strings
+//return:
+//  length: Integer
+//  strArray: Array
 function getLen(str){
-  var result = 0;
-  for(var i = 0; i <= str.length; i++){
-    var chr = str.charCodeAt(i);
+  let strArray = [];
+  let length = 0;
+  for(let i = 0; i <= str.length; i++){
+    let chr = str.charCodeAt(i);
     if(chr >= 0x0 && chr < 0x81){
-      result += 1;
+      length += 1;
+      strArray[i] = 1;
     }else{
-      result += 2;
+      length += 2;
+      strArray[i] = 2;
     }
   }
-  return result;
+  return {"length": length, "strArray": strArray};
+}
+
+//TwitterではURLを固定23文字とする仕様なので280 - 23 = 257
+//よって257文字以内に収める
+//argument
+//  str: Strings
+//  strArray: Array
+//  strLength: Integer
+//return:
+//  -1: Error
+//  str: Strings
+function cutStr(str, strArray, strLength){
+  for(let i = str.length; strLength >= 257; i--){
+    if(strArray[i] == 1){
+      str = str.slice(0, -1);
+      strLength -= 1;
+    }else if(strArray[i] == 2){
+      str = str.slice(0, -1);
+      strLength -= 2;
+    }else{
+      return -1;
+    }
+    console.log(strLength);
+  }
+  return str;
 }
